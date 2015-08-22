@@ -22,14 +22,24 @@
           $(this).addClass('highlight');  
           }, function() {  
           $(this).removeClass('highlight');  
-   });  
+   		});  
 	 	var locationsShowed = false;
 		$(document).ready(function() {
 			$("#location").click(function(){
 				if(!locationsShowed) {
-					list  = new DonutMaster(allShops);
+					var list  = new DonutMaster(allShops);
 	      		  	for (var getList=0; getList<list.masterList.length; getList++) {
-	      		  		$('body').append('<button class = "shop">'+list.masterList[getList].location+'</button><br/>');	      		  	
+	      		  		var shop = list.masterList[getList];
+	      		  		var location = shop.location;
+	      		  		var newButton = $('<button class = "shop">'+location+'</button><br/>');
+	      		  		var donutsPerHour = shop.getDonutsPerHour();
+	      		  		var donutsPerDay = shop.getDonutsPerDay();
+	      		  		(function(location, donutsPerHour, donutsPerDay){
+		      		  		newButton.click(function(){
+		      		  			alert(location + ": per hour: " + donutsPerHour + "per day: " + donutsPerDay);
+		      		  		});
+		      		  	})(location, donutsPerHour, donutsPerDay);
+	      		  		$('body').append(newButton);	      		  	
 	      		  	}
 	      		  	locationsShowed = true;	
 				}
@@ -40,7 +50,7 @@
 
 
 	
-		 function DonutMaster (allShops) {
+		function DonutMaster (allShops) {
 	
    
 			this.masterList = [];
@@ -52,14 +62,14 @@
 	
 			this.addShop = function (location, min, max, avg_donuts, hours) { 
 				var add = new DonutShop(location, min, max, avg_donuts, hours);
-		         this.masterList.push(add);
-		        };
+		        this.masterList.push(add);
+		    };
 	
 
 	
 			this.generateReport = function() {
 				for (var i=0; i<this.masterList.length; i++) {
-					console.log("Location: " + this.masterList[i].location + " Donuts per hour: " + this.masterList[i].getDonutsPerHour() + " Donuts per day: " + this.masterList[i].getDonutsPerDay());
+					console.log("Location: " + this.masterList[i].location + " Donuts per hour: " + this.masterList[i].getDonutsPerHour() + " Donuts per day: " +this.masterList[i].getDonutsPerDay());
 				}
 			};
 				
@@ -102,12 +112,6 @@
 			var ballard = new DonutShop ("Ballard", 3.75, 8, 58, 10);
 			
 			var allShops = [downtown, capitolHill, southLake, wedgewood, ballard]
-			
-
-		
-	
-	
-	
 		</script>
 	</body>
 </html>
