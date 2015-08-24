@@ -6,11 +6,7 @@
 	</head>
 	<body>
 
-		<h2>Welcome to Top Pot Doughnuts!</h2>
-		<p id = "par1">Top Pot Doughnuts invites you to join us on our delicious journey of good taste. From our uniquely designed cafes to our coffee and hand-forged gourmet doughnuts, we are committed to doing things the old fashioned way beautifully, warmly, and with unfailing attention to details.</p>
-
-<p>Our exceptional quality, vintage aesthetic, and personal customer service offers a fresh take on the old coffee and doughnuts routine. We thank you for stopping by. </p>
-		
+		<p>Welcome to Top Pot Doughnuts!</p>
 	
 		<script type = "text/javascript">
 
@@ -23,25 +19,36 @@
           }, function() {  
           $(this).removeClass('highlight');  
    		});  
-	 	var locationsShowed = false;
+	 	var locationsShowed = true;
 		$(document).ready(function() {
 			$("#location").click(function(){
-				if(!locationsShowed) {
+				if(locationsShowed) {
 					var list  = new DonutMaster(allShops);
 	      		  	for (var getList=0; getList<list.masterList.length; getList++) {
 	      		  		var shop = list.masterList[getList];
 	      		  		var location = shop.location;
-	      		  		var newButton = $('<button class = "shop">'+location+'</button><br/>');
+	      		  		var newButton = $('<button class = "shop">'+location+'</button>');
+	      		  		var statusArea = $('<label class="statusArea"></label>');
+	      		  		statusArea.hide();
+	      		  		var container = $('<div class="container"></div>');
+	      		  		container.append(newButton);
+	      		  		container.append(statusArea);
+
+
 	      		  		var donutsPerHour = shop.getDonutsPerHour();
 	      		  		var donutsPerDay = shop.getDonutsPerDay();
-	      		  		(function(location, donutsPerHour, donutsPerDay){
+	      		  		(function(donutsPerHour, donutsPerDay){
 		      		  		newButton.click(function(){
-		      		  			alert(location + ": per hour: " + donutsPerHour + "per day: " + donutsPerDay);
+		      		  			var button = $(this);
+		      		  			var container = button.parent();
+		      		  			var statusArea = container.find('.statusArea');
+		      		  		     statusArea.text(" Donuts per hour: " + donutsPerHour + " and Donuts per day: " + donutsPerDay);
+                                 statusArea.fadeIn('slow');
 		      		  		});
-		      		  	})(location, donutsPerHour, donutsPerDay);
-	      		  		$('body').append(newButton);	      		  	
+		      		  	})(donutsPerHour, donutsPerDay);
+	      		  		$('body').append(container);	      		  	
 	      		  	}
-	      		  	locationsShowed = true;	
+	      		  	locationsShowed = false;	
 				}
   		  });
 		});

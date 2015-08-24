@@ -1,48 +1,31 @@
 body {
-	text-align: center;
-}
-h2 {
-	color: purple;
-	font-family: verdana;
-}
 
+
+	background: url('http://cdni.wired.co.uk/1920x1280/d_f/doughnuts.jpg')
+}
 p {
-	font-family: arial;
-	color: rgb(232, 52, 12);
-	
-}
-
-#par1 {
-	color: rgb(206, 12, 134);
-}
-table {
+	font-size: 60px;
+	color: black;
+	font-family: verdana;
+	font-weight: bold;
 	text-align: center;
-	width: 46%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;;
+	margin-top: 45px;
 
 }
 
-td, th {
-	border: 2px solid blue;
-}
-th {
-	background-color:rgb(255, 156, 174);
-}
 
-.location {
-	background-color: rgb(97, 209, 255);
-}
 
 #location {
-	width: 200px;
-	height: 80px;
+	width: 320px;
+	height: 120px;
 	background-color: green;
-	font-size: 20px;
+	font-size: 30px;
 	color: white;
 	border-radius: 20px;
 	font-family: arial;
+    margin-left: 38%;
+
+
 }
 
 #location:hover{
@@ -50,13 +33,31 @@ th {
 }
 
 .shop {
-	border-collapse: collapse;
+	
 	margin-top:5px;
 	width: 200px;
 	height: 50px;
 	background-color: blue;
 	font-size: 15px;
 	color: white;
-	border-radius: 20px;
 	font-family: arial;
+	border-radius: 10px
+
+
+	
+}
+.statusArea {
+	padding-left: 30px 
+	margin-top: 20px;
+	font-size: 25px;
+	background-color: white;
+	display: inline-block;
+
+
+
+}
+
+.container {
+margin-left: 42.5% ;
+
 }
