@@ -11,7 +11,7 @@
 		<script type = "text/javascript">
 
 		$(document).ready(function() {
-			$('body').append("<button id = 'location'>Show all locations</button><br/>")
+			$('body').append("<button id = 'location'>Show all locations</button><br/>");
 		})
 
 	 $('location').hover(function() {               
@@ -28,6 +28,7 @@
 	      		  		var shop = list.masterList[getList];
 	      		  		var location = shop.location;
 	      		  		var newButton = $('<button class = "shop">'+location+'</button>');
+	      		  		newButton.fadeIn(1300);
 	      		  		var statusArea = $('<label class="statusArea"></label>');
 	      		  		statusArea.hide();
 	      		  		var container = $('<div class="container"></div>');
