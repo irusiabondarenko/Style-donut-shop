@@ -7,7 +7,8 @@ p {
 	font-family: verdana;
 	font-weight: bold;
 	text-align: center;
-	margin-top: 45px;
+	margin-top: 50px;
+
 
 }
 
@@ -19,7 +20,6 @@ p {
 	color: white;
 	border-radius: 20px;
 	font-family: arial;
-    margin-left: 15%;
 
 
 }
@@ -36,12 +36,7 @@ p {
 	color: white;
 	border-radius: 20px;
 	font-family: arial;
-	margin-left: 10%;
-
-    
-
-
-}
+	}
 
 #addShop:hover{
 	background-color: red;
@@ -52,64 +47,62 @@ p {
 }
 .shop {
 	
-	margin-top:3px;
+	
 	width: 200px;
 	height: 50px;
 	background-color: blue;
 	font-size: 15px;
 	color: white;
 	font-family: arial;
-	border-radius: 10px
-
-
-	
+	border-radius: 10px;
 }
 .statusArea {
-	padding-left: 30px 
-	margin-top: 20px;
+	
+	
 	font-size: 15px;
 	background-color: white;
-	display: inline-block;
-
-
-
+	
 }
 
 .container {
-max-width: 600px;
-margin-left: 53% ;
 
 }
 
 .mainContainer {
 	display: flex;
 	flex-direction: row;
+	margin-top: 50px;
+	justify-content: space-around;
 }
 
-#form {
-	margin-left: 15%;
-	border-spacing: 5px;
+.newShopContainer {
+	position: center;
+
 }
+
+.shopsContainer {
+	margin-right: 80px;
+	min-width: 520px;
+	
+}
+
 
 input{
 display: block;
-margin:10px 0;
+
 padding:5px;
 height:35px;
 box-shadow:1px 1px 1px 1px gray;
 border-radius:3px;
-margin-left: 22%;
+
 }
 
-form {
-	min-width: 400px;
-	margin-right: 0px;
-}
+
 
 #textAdded {
 	font-size: 17px;
 	color: white;
 	text-align: left;
-	margin-left: 11%;
+	margin-left: 8%;
 
 }

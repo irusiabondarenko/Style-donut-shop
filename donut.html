@@ -1,7 +1,6 @@
 <DOCTYPE html>
 <html>
 	<head>
-	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	 <link rel="stylesheet" type="text/css" href="style_donut.css">
 	 <script src="jquery-1.11.0.js"></script>
 	</head>
@@ -11,16 +10,16 @@
 		
 			
 		<div class="mainContainer">
-			<span class="newShopContainer"/>
-			<span class="shopsContainer"/>
+			<span class="newShopContainer"></span>
+			<span class="shopsContainer"></span>
 		</div>
 	
 		<script type = "text/javascript">
 
 		$(document).ready(function() {
-			$('body').append("<div class = 'buttons'></div>");
-			$('.buttons').append("<button id = 'addShop'>Add new shop</button>");
-			$('.buttons').append("<button id = 'location'>Show all locations</button>");
+			
+			$('.newShopContainer').append("<button id = 'addShop'>Add new shop</button>");
+			$('.shopsContainer').append("<button id = 'location'>Show all locations</button>");
 			
 		})
 		
@@ -37,9 +36,6 @@
           $(this).removeClass('highlight');  
    		});  
 
-        
-
-
 
 	 	var locationsShowed = true;
 
@@ -47,7 +43,7 @@
 			$("#location").click(function(){
 				if(locationsShowed) {
 					$('#textAdded').hide();
-					var locationsContainer = $('<span class="locationsContainer"></span>');
+					
 	      		  	for (var getList=0; getList<donutmaster.masterList.length; getList++) {
 	      		  		var shop = donutmaster.masterList[getList];
 	      		  		var location = shop.location;
@@ -70,21 +66,24 @@
                                  statusArea.fadeToggle();
 		      		  		});
 		      		  	})(donutsPerHour, donutsPerDay);
-	      		  		locationsContainer.append(container);	      		  	
+	      		  		$(".shopsContainer").append(container);	      		  	
 	      		  	}
-					$('.mainContainer').append(locationsContainer);
-	      		  	locationsShowed = false;	
+					
+	      		  	locationsShowed = false;
+					formShowed = true;
+					
 				}
-  		  });
+			});
 		});
-         
+			
+			
+			
+		var formShowed = true;
           $(document).ready(function() {
-          	var formShowed = true;
-			$("#addShop").on("click", function(){
-				if (formShowed) {
-				var formContainer = $('<span></span>');
-				formContainer.appendTo($('.mainContainer'));
-				formContainer.append( 
+		  if(formShowed) {
+			$("#addShop").one("click", function(){
+		
+				$(".newShopContainer").append( 
 					$("<form/>", { action: '#', method: '#'
 					 }).append(
 					
@@ -125,27 +124,27 @@
 							id: 'submit',
 							value: 'Submit'
 							})));
+							
+					formShowed = false;
+					$("input[type=button]").on("click", function(event) {
+						event.preventDefault();
+						var loc = $("#loc").val();
+						 var min = $("#min").val();
+						 var max = $("#max").val();
+						 var avg = $("#avg").val();
+						 var hours = $("#hours").val();
 
-				$("input[type=button]").on("click", function(event) {
-	             	event.preventDefault();
-	                var loc = $("#loc").val();
-	                 var min = $("#min").val();
-	                 var max = $("#max").val();
-	                 var avg = $("#avg").val();
-	                 var hours = $("#hours").val();
+						donutmaster.addShop(loc, min, max, avg, hours );
+						$('form').hide();
+						$('body').append('<p id = "textAdded"> Thank you. New shop is added</p>');
+						$('.container').hide();
+					locationsShowed = true;
+	             })
+            	});
+			}
+		})
 
-	                donutmaster.addShop(loc, min, max, avg, hours );
-	                $('form').hide();
-	                $('body').append('<p id = "textAdded"> Thank you. New shop is added</p>');
-
-             	});
-               };
-               formShowed = false;
-				});
-
-				
-			})
-
+					
 		function DonutMaster (allShops) {
 	
    
